@@ -53,17 +53,22 @@
 }
 
 		var dataBar = JSON.parse(<?php echo json_encode($barChart); ?>)
-
+		console.log(dataBar);
 		var groupedData = {
 		sesuai: [],
-		tidak_sesuai: []
+		tidak_sesuai: [],
+		partai: []
 		};
 
 		// Mengelompokkan data berdasarkan key 'sesuai' dan 'tidak_sesuai'
-		dataBar.forEach(function(item) {
-		groupedData.sesuai.push(item.sesuai);
-		groupedData.tidak_sesuai.push(item.tidak_sesuai);
-		});
+		for (var i = 0; i < dataBar.length; i++) {
+			var item = dataBar[i];
+			console.log(item);
+			groupedData.sesuai.push(item.sesuai);
+			groupedData.partai.push(item.name_partai);
+			groupedData.tidak_sesuai.push(item.tidak_sesuai);
+			console.log(item.sesuai);
+			}
 		
 		var sesuaiPie = sumArray(groupedData.sesuai);
 		var tidaksesuaiPie = sumArray(groupedData.tidak_sesuai);
@@ -75,7 +80,7 @@
 		var categoriesBar = dataBar.map(function(item) {
 			return item.name_partai;
 		});
-	
+		console.log(groupedData);
         var options = {
           series: [sesuaiPie, tidaksesuaiPie],
           chart: {
@@ -151,7 +156,7 @@
         },
         xaxis: {
           type: 'text',
-          categories: categoriesBar
+          categories: groupedData.partai
           
         },
         legend: {
