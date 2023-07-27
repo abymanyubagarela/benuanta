@@ -24,7 +24,7 @@
 	    function getBarchart() {
 	    	
 	    	$this->db->select('trx_proses.total as total, trx_proses.kwi_tot as kwi_tot, master_partai.name as name_partai, master_kategori.name as name_kategori')->from('trx_proses')->join('master_partai','master_partai.id = trx_proses.id_partai')->join('master_kategori','master_kategori.id = trx_proses.id_kategori');
-	    	
+	    	$this->db->where('trx_proses.is_active','1');
 	        $query = $this->db->get();
 
 			$partai=$query->result();

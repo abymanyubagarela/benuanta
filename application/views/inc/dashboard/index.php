@@ -32,9 +32,7 @@
 								<div class="col-md-8">
 								<div id="chartBar"> </div>
 								</div>
-							</div>
-
-						  
+							</div>						  
                         </div>
                     </div>
 
@@ -68,7 +66,39 @@
                         </div>
 
                         <div class="col-md-8">
-                            
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Rekapitulasi SPJ</h4>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table dataTable no-footer table-responsive" id="myTable2">
+                                    <thead>
+                                        <tr role="row" >
+                                            <th>No</th>
+                                            <th>Nama Partai</th>
+                                            <th>Total SPJ</th>
+                                            <th>SPJ Sesuai</th>
+                                            <th>SPJ Tidak Sesuai</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php 
+                                            $i = 1 ;
+                                            foreach ($rekap as $key =>$row) { ?>
+                                                <tr>
+                                                    <td><?= $i++ ?></td>
+                                                    <td><?= ucwords($row['partai']) ?></td>
+                                                    <td><?= number_format($row['total_spj']) ?></td>
+                                                    <td><?= number_format($row['sesuai']) ?></td>
+                                                    <td><?= number_format($row['tidaksesuai']) ?></td>
+                                                    <!-- <td><?= $row['sesuai'] / $row['sesuai'] + $row['tidaksesuai'] ?>%</td>
+                                                    <td><?= $row['tidaksesuai'] / $row['sesuai'] + $row['tidaksesuai'] ?>%</td> -->
+                                                </tr>
+                                            <?php } ?>
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
@@ -83,6 +113,11 @@
         <script type="text/javascript">
 		
         $('#myTable').DataTable({
+            "paging": false, // Menonaktifkan opsi halaman
+            "info": false 
+        });
+
+        $('#myTable2').DataTable({
             "paging": false, // Menonaktifkan opsi halaman
             "info": false 
         });
