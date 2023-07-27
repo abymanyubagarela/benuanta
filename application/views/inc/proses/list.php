@@ -87,9 +87,20 @@
             var alias = "<?= base_url().$redirect ?>";
 
             $('.process').click(function(){
-                window.location.href = alias + '/procedd/' + $(this).data('id');
+				var idforproses = $(this).data('id');
+				var time =  Math.floor((Math.random() * 4000)+4000) 
+
+				$('#global-loader').show();
+				const myTimeout = setTimeout(loaders, time);
+
+				function loaders() {
+					$('#global-loader').hide();
+					window.location.href = alias + '/procedd/' + idforproses;
+				}
+              
             })
 
+			
             $('.details').click(function(){
                 window.location.href = alias + '/details/' + $(this).data('id');
             })
