@@ -3,7 +3,7 @@
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
                 <li>
-                    <a href="https://dreamspos.dreamguystech.com/html/template/index.html"><span> Dashboard</span> </a>
+                    <a href="<?= base_url().'dashboard'; ?>"><span> Dashboard</span> </a>
                 </li>
 
                 <li>

@@ -93,3 +93,5 @@ $route['proses/edit/(:num)'] = 'cproses/edit/$1';
 $route['proses/procedd/(:num)'] = 'cproses/procedd/$1';
 $route['proses/details/(:num)'] = 'cproses/details/$1';
 
+
+$route['dashboard'] = 'cdashboard';
