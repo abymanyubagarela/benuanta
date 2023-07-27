@@ -48,3 +48,4 @@
         <?php $this->load->view('layout-b/footer') ?>
     </body>
 </html>
+
