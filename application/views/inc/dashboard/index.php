@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
         <?php $this->load->view('layout-b/head') ?>
+         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     </head>
     <body>
         <div id="global-loader">
@@ -36,15 +37,55 @@
 						  
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Daftar PKP</h4>
+                                </div>
+                                <div class="card-body">
+                                    <table class="table dataTable no-footer table-responsive" id="myTable">
+                                    <thead>
+                                        <tr role="row" >
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php 
+                                            $i = 1 ;
+                                            foreach ($vendor as $key =>$row) { ?>
+                                                <tr>
+                                                    <td><?= $i++ ?></td>
+                                                    <td><?= ucwords($row->name) ?></td>
+                                                </tr>
+                                            <?php } ?>
+                                    </tbody>
+                                </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-8">
+                            
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
         
         <?php $this->load->view('layout-b/footer') ?>
 		<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript">
 		
-
+        $('#myTable').DataTable({
+            "paging": false, // Menonaktifkan opsi halaman
+            "info": false 
+        });
 		// array sum 
 		function sumArray(array) {
 		return array.reduce(function (accumulator, currentValue) {

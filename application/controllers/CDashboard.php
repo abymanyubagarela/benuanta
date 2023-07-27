@@ -19,6 +19,7 @@ class CDashboard extends CI_Controller {
       
 		## load model here 
 		$this->load->model('MDashboard', 'Dashboard');
+        $this->load->model('MVendor', 'Vendor');
 	}
 
 	public function index()	{	
@@ -29,14 +30,22 @@ class CDashboard extends CI_Controller {
 
 		$data['list'] = $this->Dashboard->getAll();
 		$data['barChart'] = json_encode($this->Dashboard->getBarchart());
+
+
+        // get table vendor
+        $data['vendor'] = $this->Vendor->getAll();
+
+        // print_r($data);die();
 		$this->load->view('inc/dashboard/index', $data);
 	}
 
 	public function test(){
-		
-		
 	
 		dd($this->Dashboard->getBarchart());
 	}
+
+
+
+
 
 }
